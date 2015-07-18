@@ -4,7 +4,7 @@ target datalayout = "e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f3
 target triple = "x86_64-unknown-linux-gnu"
 declare i32 @__gxx_personality_v0(...)
 
-define i64 @main(i32 %argc, i8** %argv) uwtable {
+define i64 @main(i32 %argc, i8** %argv) uwtable personality i32 (...)* @__gxx_personality_v0 {
 entry:
   %0 = invoke i64 undef(i64 0)
                  to label %cont unwind label %lpad
@@ -14,8 +14,7 @@ cont:
                  to label %done unwind label %lpad
 
 lpad:
-  %2 = landingpad {i8*, i32} personality i32 (...)* @__gxx_personality_v0
-          cleanup
+  %2 = landingpad {i8*, i32} cleanup
   br label %done
 
 done:
