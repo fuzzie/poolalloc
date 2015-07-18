@@ -28,7 +28,7 @@ set(SOURCES
 if( NOT WIN32 AND LLVM_ENABLE_PIC )
   set(bsl ${BUILD_SHARED_LIBS})
   set(BUILD_SHARED_LIBS ON)
-  add_llvm_library(LLVMDataStructure ${SOURCES})
+  add_llvm_loadable_module(LLVMDataStructure ${SOURCES})
   set(BUILD_SHARED_LIBS ${bsl})
   set_property(TARGET LLVMDataStructure PROPERTY OUTPUT_NAME "LLVMDataStructure")
   set_property(TARGET LLVMDataStructure PROPERTY PREFIX "")

@@ -4,6 +4,12 @@
 file(GLOB entries *)
 foreach(entry ${entries})
   if(IS_DIRECTORY ${entry} AND EXISTS ${entry}/CMakeLists.txt)
-    add_subdirectory(${entry})
+	  #    if(${entry} MATCHES "DSA")
+      add_subdirectory(${entry})
+      #    endif()
+      #    if(${entry} MATCHES "AssistDS")
+      #      add_subdirectory(${entry})
+      #    endif()
+
   endif()
 endforeach(entry)

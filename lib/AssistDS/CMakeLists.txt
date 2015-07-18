@@ -28,7 +28,7 @@ set(SOURCES
 if( NOT WIN32 AND LLVM_ENABLE_PIC )
   set(bsl ${BUILD_SHARED_LIBS})
   set(BUILD_SHARED_LIBS ON)
-  add_llvm_library(AssistDS ${SOURCES})
+  add_llvm_loadable_module(AssistDS ${SOURCES})
   set(BUILD_SHARED_LIBS ${bsl})
   set_property(TARGET AssistDS PROPERTY OUTPUT_NAME "AssistDS")
   set_property(TARGET AssistDS PROPERTY PREFIX "")
